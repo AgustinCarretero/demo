@@ -161,13 +161,74 @@
 		$ rm new.file
 		$ git status
 
-	# Express commit assumes the file is already tracked and only the modifications need to be added (staged)
+	# Express commit relies upon the file is already tracked and only the modifications need to be added (staged) and commited in one sigle step (express)
 		$ git commit -am "Modifiying README file"
-		$ git status
+		
+	# Make sure the different commit instances
+		$ git log
 
 >> Lecture 23: Backing Out Changes
+
+	# Modify a tracked file (README), save and close, and check the unstaged modifications	
+		$ git status 
+		
+	# Stage those updates and make sure they are ready to commit
+		$ git add .
+		$ git status
+		
+	# Unstage updates by restoring to its previous state, and making sure sure the new status
+		$ git reset HEAD README.md
+		$ git status
+
+	# Edit the file to see that the updates are still there. Restore the file to its previous status (without the updates), making sure the
+		$ git checkout -- README.md
+		$ git status
+
 >> Lecture 24: History and Making New Commands with Alias
->> Lecture 25: Rename and Delete Files
+
+	# Show detailed commit log
+		$ git log
+		
+	# Select contents and fashion of commit log from the git help page
+		$ git help log
+
+	# Test the command output of the selected contents and fashion
+		$ git log --oneline --graph --decorate --all
+
+	# Add an alias to the global git configuration
+		$ git config --global alias.hist "log --oneline --graph --decorate --all" 
+
+	# Make sure the alias has been saved correctly
+		$ git config --global --list
+
+	# Execute the custom alias
+		$ git hist
+
+	# Run the alias adding new parameters to the prompt line as log help allows
+		$ git hist -- LICENSE.md
+
+>> Lecture 25: Rename and Delete Files within git
+
+# Create a new file, add and commit using express commit
+	$ mate example.txt
+	$ ls
+	$ git add example.txt
+	$ git commit -am 
+
+# Rename the file within git, so that only committing the action is needed
+	$ git mv example.txt demo.txt
+	$ git commit -m "Renaming to demo.txt"
+	$ git status
+
+# Remove the file within git, so that only commiting the action is needed
+
+	$ git rm demo.txt
+	$ git commit -m "Removing demo.txt"
+	$ git status
+
+#The advantage of using git mv/rm for renaming/removing files against the bash native commands is that the changes are staged automatically by git, with the only need to commit any file change.
+
+
 >> Lecture 26: Managing Files Outside of Git
 >> Lecture 27: Excluding Unwanted Files
 
