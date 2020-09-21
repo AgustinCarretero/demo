@@ -4,4 +4,4 @@ This is causing a conflict
 
 ## Heading 2
 
-Doing some updates. This is causing a merging conflict.
+This will definetely cause a conflict!
