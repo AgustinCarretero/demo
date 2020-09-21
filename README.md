@@ -1,6 +1,6 @@
 # Demo Project README
 
-This is a simple readme file
+This is causing a conflict
 
 ## Heading 2
 
