@@ -21,11 +21,14 @@
 
 	# Create a bash alias to provide a custom short command to notepad++
 		$ notepad++ ~/.bash_profile
+	
 	# Add to the bash profile text file... 
 		alias npp='notepad++ -multiInst -nosession'
+	
 	# Save and close the file, and restart the git bash
 	# Make notepad++ the default editor for git
 		$ git config --global core.editor "notepad++ -multiInst -nosession"
+	
 	# Test out succesful notepad integration wihtin git by editing the git config file
 		$ git config --global -e
 		
@@ -209,29 +212,124 @@
 
 >> Lecture 25: Rename and Delete Files within git
 
-# Create a new file, add and commit using express commit
-	$ mate example.txt
-	$ ls
-	$ git add example.txt
-	$ git commit -am 
+	# Create a new file, add and commit using express commit
+		$ mate example.txt
+		$ ls
+		$ git add example.txt
+		$ git commit -m "Adding example file"
 
-# Rename the file within git, so that only committing the action is needed
-	$ git mv example.txt demo.txt
-	$ git commit -m "Renaming to demo.txt"
-	$ git status
+	# Rename the file within git, so that only committing the action is needed
+		$ git mv example.txt demo.txt
+		$ git status
+		$ git commit -m "Renaming to demo.txt"
+		$ git status
 
-# Remove the file within git, so that only commiting the action is needed
+	# Remove the file within git, so that only commiting the action is needed
+		$ git rm demo.txt
+		$ git status
+		$ git commit -m "Removing demo.txt"
+		$ git status
 
-	$ git rm demo.txt
-	$ git commit -m "Removing demo.txt"
-	$ git status
-
-#The advantage of using git mv/rm for renaming/removing files against the bash native commands is that the changes are staged automatically by git, with the only need to commit any file change.
-
+	#The advantage of using git mv/rm for renaming/removing files against the bash native commands is that the changes are staged automatically by git, with the only need to commit any file change.
 
 >> Lecture 26: Managing Files Outside of Git
+
+	# Create and delete a file
+		$ touch myfile.txt
+
+	# Rename a tracked at the OS level using the bash command, making sure that it shows as a deletion for git
+		$ mv LICENSE.md LICENSE.txt
+		$ ls -l
+		$ git status
+		
+	# Update the staging area to restore deleted files into it
+		$ git add -u
+		$ git status
+
+	# Include both additions and deletions to the staging area
+		$ git add -A
+		$ git status
+
+	# Commit all modifications
+		$ git commit -m "rename and add"
+		
+	# Remove the create file at the OS level using the basch remove commands, making sure they have been untracked from git.
+		$ rm myfile.txt
+		$ git status
+
+	# Update the staging and commit the file removal
+		$ git add -u
+		$ git commit -m "removed myfile.txt"
+
 >> Lecture 27: Excluding Unwanted Files
 
-#Section 4: BEYOND THE BASICS
+	# Create a file that will never be wanted to be part of the repository, and make sure it's untracked
+		$ notepad++ application.log
+		$ git status
+
+	# Create the file that will be used by git to know which files should never be part of the repository
+		$ notepad++ .gitignore
+		
+	# Write into the gitignore file as may likes as wanted, either a specific  or a pattern like...
+		application.log
+		*.log
+		*.log?
+
+	# Save and close the editor, add and commit the gitignore file
+		$ git status
+		$ git add .gitignore
+		$ git commit -m "adding ingore file"
+		$ git status
+
+	# Remove the application.log file
+		$ rm appliction.log.
+
+## Section 5: BEYOND THE BASICS
+
+>> Lecture 28: Advanced Overview
+>> Lecture 29: Comparing Differences
+
+	# Pull the commit history using the custom alias command we created
+		$ git hist
+
+	# Check the differences between any arbitriary pointer and the HEAD pointer, which is reserved for the last commit
+		$ git diff <anyPointer> HEAD
+
+	# Similar output would be by using the preconfigured difftool (p4merge)
+		$ git difftool <anyPointer> HEAD
+
+	# Edit the README file and add some changes, making sure there is some difference now, with both the command line and the default difftool
+		$ mate README.md
+		$ git diff 
+		$ git difftool
+		
+	# Check the variety of options including in the diff in-line command
+		$ git help diff
+
+>> Lecture 30: Branching and Merging Types
+>> Lecture 31: Special Markers
+>> Lecture 32: Simple Branching Example
+>> Lecture 33: Conflict Resolution
+>> Lecture 34: Marking Special Events with Tagging 
+>> Lecture 35: Saving Work in Progress with Stashing
+>> Lecture 36: Time Travel with Reset and Reflog
+
+
+## Section 6: WELCOME TO GITHUB
+## Section 7: GITHUB AUTHENTICATION
+## Section 8: GITHUB REPOSITORY
+## Section 9: GITHUB REPOSITORY BRANCHES
+## Section 10: GITHUB TAGS AND RELEASES
+## Section 11: COMPARING DIFFERENCES
+## Section 12: SOCIAL CODING
+## Section 13: GITHUB ISSUES
+## Section 14: GITHUB GISTS
+## Section 15: GITHUB ORGANIZATION
+## Section 16: CONCLUSION
+## Section 17: BONUS: BACKGROUND AND EXTRA CONTENT
+## Section 18: BONUS: FULL WINDOWS INSTALLATION
+## Section 19: BONUS: FULL MAC OS X INSTALLATION
+## Section 20: SPECIAL OFFERS
+ 
 
 
