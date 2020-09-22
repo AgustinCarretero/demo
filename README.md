@@ -4,4 +4,4 @@ This is causing a conflict
 
 ## Heading 2
 
-This is a very bad update.
+Let's cause a merging conflict!
